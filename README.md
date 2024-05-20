@@ -40,10 +40,10 @@ The third part of the project involves using the trained YOLOv8 model to detect 
 
 - Selecting the parking slot coordinates from the captured image using the `select slot coordinates.ipynb` notebook.
 
+- Labelling the parking slots from `slot_coordinates.txts` using the `label_parking_slot.ipynb` notebook.
+
 - Running the `final_slot_detection.ipynb` notebook to detect empty slots in real-time videos and displaying the total number of empty slots in the parking area.
 
 - Utilizing the YOLOv8 model and OpenCV for real-time object detection and post-processing to identify occupied and empty parking slots.
 
 This project provides a valuable learning opportunity for understanding YOLOv8, OpenCV, and real-time object detection. It offers features such as real-time detection of car parking slot occupancy, ease of use, and well-documented code.
-
-We hope you find this project useful and enjoy exploring its capabilities!
