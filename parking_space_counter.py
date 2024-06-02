@@ -5,23 +5,18 @@ import pandas as pd
 from ultralytics import YOLO
 import cvzone
 
-# Load polylines and area names from the pickle file
 with open("picklefile", "rb") as f:
     data = pickle.load(f)
     polylines, area_names = data['polylines'], data['area_names']
 
-# Load class list from coco.txt
 my_file = open("coco.txt", "r")
 data = my_file.read()
 class_list = data.split("\n")
 
-# Load YOLO model
 model = YOLO('yolov8s.pt')
 
-# Capture video from file
 cap = cv2.VideoCapture('easy1.mp4')
 
-# Define video codec and create VideoWriter object for MP4
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
 out = cv2.VideoWriter('output.mp4', fourcc, 20.0, (1020, 500))
 
@@ -74,16 +69,16 @@ while True:
     car_count = len(counter1)
     free_space = len(list2) - car_count
     total_space = car_count + free_space
+    
     cvzone.putTextRect(frame, f'TOTAL PARKING SPOTS: {total_space}', (50, 60), 2, 2)
     cvzone.putTextRect(frame, f'OCCUPIED PARKING SPOTS: {car_count}', (50, 120), 2, 2)
     cvzone.putTextRect(frame, f'AVAILABLE PARKING SPOTS: {free_space}', (50, 180), 2, 2)
 
-    # Write the frame to the output video file
     out.write(frame)
 
     cv2.imshow('FRAME', frame)
     key = cv2.waitKey(1) & 0xFF
-    if key == 27:  # Esc key to stop
+    if key == 27:
         break
 
 cap.release()
